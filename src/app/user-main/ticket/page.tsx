@@ -77,12 +77,14 @@ export function TicketManagement() {
         onMouseLeave={() => setIsExpanded(false)}
       >
         <div className="flex items-center mb-8">
+          <Link href={"/Profile"} className='flex items-center'>
           <img src="/Sidebar-icon.jpg" alt="Admin" className="w-10 h-10 rounded-full mr-3" />
           {isExpanded && <span className="text-xl font-semibold">Admin</span>}
+          </Link>
         </div>
         <nav className="flex-grow">
           <SidebarItem icon={<Home size={20} />} label="Home" href="/" isExpanded={isExpanded} />
-          <SidebarItem icon={<History size={20} />} label="History" href="#" isExpanded={isExpanded} />
+          <SidebarItem icon={<History size={20} />} label="History" href="/ticket-history" isExpanded={isExpanded} />
           <SidebarItem icon={<Settings size={20} />} label="Settings" href="#" isExpanded={isExpanded} />
           <SidebarItem icon={<LogOut size={20} />} label="Log out" href="#" isExpanded={isExpanded} />
         </nav>

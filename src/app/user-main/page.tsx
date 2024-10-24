@@ -174,7 +174,7 @@ export function SidebarDemo() {
     },
     {
       label: "Profile",
-      href: "#",
+      href: "/Profile",
       icon: (
         <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
@@ -246,7 +246,7 @@ export const Sidebar = ({
 export const Logo = () => {
   return (
     <Link
-      href="/"
+      href="/Profile"
       className="font-normal flex space-x-2 items-center text-sm text-neutral-100 py-1 relative z-20"
     >
       <Image
