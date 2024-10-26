@@ -72,7 +72,7 @@ export function TicketManagement() {
     <div className="flex h-screen"> 
       {/* Sidebar */}
       <aside 
-        className={`fixed top-0 left-0 h-full bg-Primary dark:bg-Primary text-neutral-200 p-4 transition-all duration-300 ease-in-out z-10 flex flex-col ${isExpanded ? 'w-[300px]' : 'w-[150px]'}`}
+        className={`fixed top-0 left-0 h-full bg-Primary dark:bg-Primary text-neutral-200 p-4 transition-all duration-300 ease-in-out z-10 flex flex-col ${isExpanded ? 'w-[300px]' : 'w-[72px]'}`}
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
       >
@@ -85,7 +85,6 @@ export function TicketManagement() {
         <nav className="flex-grow">
           <SidebarItem icon={<Home size={20} />} label="Home" href="/" isExpanded={isExpanded} />
           <SidebarItem icon={<History size={20} />} label="History" href="/ticket-history" isExpanded={isExpanded} />
-          <SidebarItem icon={<Settings size={20} />} label="Settings" href="#" isExpanded={isExpanded} />
           <SidebarItem icon={<LogOut size={20} />} label="Log out" href="#" isExpanded={isExpanded} />
         </nav>
         <button
@@ -98,7 +97,7 @@ export function TicketManagement() {
       </aside>
 
       {/* Main content */}
-      <main className={`flex-1 p-8 bg-neutral-100 dark:bg-slate-950 overflow-auto transition-all duration-300 ease-in-out ${isExpanded ? 'ml-[300px]' : 'ml-[100px]'}`}>
+      <main className={`flex-1 p-8 bg-neutral-100 dark:bg-slate-950 overflow-auto transition-all duration-300 ease-in-out ${isExpanded ? 'ml-[300px]' : 'ml-[72px]'}`}>
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-8 text-Primary dark:text-neutral-100">
             My tickets :

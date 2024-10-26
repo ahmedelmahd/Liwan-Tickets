@@ -148,18 +148,6 @@ const data = [
     src: "/card_four.jpg",
     content: <DummyContent />,
   },
-  {
-    category: "iOS",
-    title: "Photography just got better.",
-    src: "/card_five.jpg",
-    content: <DummyContent />,
-  },
-  {
-    category: "Hiring",
-    title: "Hiring for a Staff Software Engineer",
-    src: "/card_five.jpg",
-    content: <DummyContent />,
-  },
 ];
 
 // Sidebar Demo with Light/Dark Mode
@@ -169,28 +157,21 @@ export function SidebarDemo() {
       label: "My Tickets",
       href: "/user-main/ticket",
       icon: (
-        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0 mx-2" />
       ),
     },
     {
       label: "Profile",
       href: "/Profile",
       icon: (
-        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Settings",
-      href: "#",
-      icon: (
-        <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0 mx-2" />
       ),
     },
     {
       label: "Logout",
       href: "#",
       icon: (
-        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0 mx-2" />
       ),
     },
   ];
@@ -278,7 +259,7 @@ export const LogoIcon = () => {
         src="/Sidebar-Icon.jpg"
         width={30}
         height={30}
-        className="rounded-full"
+        className="rounded-full mx-1"
         alt="Profile Icon"
       />
     </Link>
