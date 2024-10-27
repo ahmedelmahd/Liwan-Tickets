@@ -69,7 +69,10 @@ export function AuroraBackgroundDemo() {
           </div>
           <div>
             <img  src={theme === 'dark' ? "/liwan-dark-no-bg.png" : '/liwan-logo-inverted.png'}
-            alt="logo" width={440} height={440}  />
+            alt="logo"
+            width={theme === 'dark' ? 400 : 340} // Set specific width for each theme
+            height={theme === 'dark' ? 400 : 340} // Set specific height for each theme  
+            />
           </div>
         </div>
         

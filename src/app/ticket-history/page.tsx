@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Moon, Sun, Home, History, ChevronUp, ChevronDown } from 'lucide-react'
+import { Moon, Sun, Home, History, ChevronUp, ChevronDown, Ticket } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { ThemeProvider, useTheme } from 'next-themes'
@@ -35,7 +35,7 @@ export function TicketManagement() {
     <div className="flex h-screen bg-Primary text-neutral-200"> 
       {/* Sidebar */}
       <aside 
-        className={`fixed top-0 left-0 h-full bg-Primary text-neutral-200 transition-all duration-300 ease-in-out z-10 flex flex-col ${isExpanded ? 'w-[300px]' : 'w-[72px]'}`}
+        className={`fixed top-0 left-0 h-full bg-Primary dark:bg-neutral-950 text-neutral-200 transition-all duration-300 ease-in-out z-10 flex flex-col ${isExpanded ? 'w-[300px]' : 'w-[72px]'}`}
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
       >
@@ -47,6 +47,7 @@ export function TicketManagement() {
         </div>
         <nav className="flex-grow">
           <SidebarItem icon={<Home size={20} />} label="Home" href="/" isExpanded={isExpanded} />
+          <SidebarItem icon={<Ticket size={20} />} label="My Tickets" href="/user-main/ticket" isExpanded={isExpanded} />
           <SidebarItem icon={<History size={20} />} label="History" href="#" isExpanded={isExpanded} />
         </nav>
         <button
@@ -59,18 +60,25 @@ export function TicketManagement() {
       </aside>
 
       {/* Main content */}
-      <main className={`flex-1 p-8 overflow-auto dark:bg-neutral-950 bg-neutral-200 text-Primary dark:text-neutral-200 transition-all duration-300 ease-in-out ${isExpanded ? 'ml-[300px]' : 'ml-[60px]'}`}>
+      <main className={`flex-1 p-8 overflow-auto dark:bg-Primary bg-neutral-200 text-Primary dark:text-neutral-200 transition-all duration-300 ease-in-out ${isExpanded ? 'ml-[300px]' : 'ml-[60px]'}`}>
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-8">
             History
           </h1>
           <div className="mb-4">
             <select className="p-2 rounded bg-Primary text-neutral-200">
-              <option>Sort by</option>
-              <option>Creation date</option>
-              <option>Response date</option>
-              <option>Alphabetical</option>
+              <option>Departments</option>
+              <option>Department one</option>
+              <option>Department two</option>
+              <option>Department three</option>
+              <option>Department four</option>
+            </select>
+            <select className='p-2 rounded bg-Primary text-neutral-200 ml-4'>
+              <option>Filter by</option>
               <option>Assigned to</option>
+              <option>Creation Date</option>
+              <option>Pending</option>
+              <option>Completed</option>
             </select>
           </div>
           <AnimatePresence mode="wait">
@@ -123,7 +131,7 @@ function SidebarItem({ icon, label, href, isExpanded }: { icon: React.ReactNode;
 
 function TicketItem({ ticket }: { ticket: any }) {
   return (
-    <div className="p-4 rounded-lg bg-Primary text-neutral-200"> 
+    <div className="p-4 rounded-lg bg-Primary shadow-lg hover:shadow-xl text-neutral-200"> 
       <div className="flex items-start space-x-4">
         <img src="/Sidebar-icon.jpg" alt={ticket.user} className="w-10 h-10 rounded-full" />
         <div className="flex-1">

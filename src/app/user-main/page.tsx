@@ -10,7 +10,6 @@ import {
 import {
   IconArrowLeft,
   IconBrandTabler,
-  IconSettings,
   IconUserBolt,
 } from "@tabler/icons-react";
 import Link from "next/link";
@@ -157,21 +156,21 @@ export function SidebarDemo() {
       label: "My Tickets",
       href: "/user-main/ticket",
       icon: (
-        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0 mx-2" />
+        <IconBrandTabler className="text-neutral-200 h-6 w-6 flex-shrink-0 mx-2" />
       ),
     },
     {
       label: "Profile",
       href: "/Profile",
       icon: (
-        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0 mx-2" />
+        <IconUserBolt className=" text-neutral-200 h-6 w-6 flex-shrink-0 mx-2" />
       ),
     },
     {
       label: "Logout",
       href: "#",
       icon: (
-        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0 mx-2" />
+        <IconArrowLeft className="text-neutral-200 h-6 w-6 flex-shrink-0 mx-2" />
       ),
     },
   ];
@@ -215,8 +214,8 @@ export const Sidebar = ({
             <SidebarLink key={idx} link={link} />
           ))}
         </div>
-        <div className="mt-auto pb-4"> {/* Push to bottom */}
-          <ThemeToggle />
+        <div className="mt-auto pb-4 text-neutral-200 hover:text-Primary"> {/* Push to bottom */}
+          <ThemeToggle/>
         </div>
       </div>
     </motion.div>

@@ -5,6 +5,8 @@ import { Moon, Sun, Home, User, Ticket, History, Settings, LogOut, ChevronUp, Ch
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { ThemeProvider, useTheme } from 'next-themes'
+import { GrDashboard } from 'react-icons/gr'
+import { IconDashboard, IconLayoutDashboard } from '@tabler/icons-react'
 
 const tickets = [
   { id: 1, user: 'Test user', title: 'Issue title', description: 'Description Description Description Description Description Description', date: '19/10/2024' },
@@ -72,7 +74,7 @@ export function TicketManagement() {
     <div className="flex h-screen"> 
       {/* Sidebar */}
       <aside 
-        className={`fixed top-0 left-0 h-full bg-Primary dark:bg-Primary text-neutral-200 p-4 transition-all duration-300 ease-in-out z-10 flex flex-col ${isExpanded ? 'w-[300px]' : 'w-[72px]'}`}
+        className={`fixed top-0 left-0 h-full dark:bg-neutral-950 bg-Primary text-neutral-200 p-4 transition-all duration-300 ease-in-out z-10 flex flex-col ${isExpanded ? 'w-[300px]' : 'w-[72px]'}`}
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
       >
@@ -85,11 +87,12 @@ export function TicketManagement() {
         <nav className="flex-grow">
           <SidebarItem icon={<Home size={20} />} label="Home" href="/" isExpanded={isExpanded} />
           <SidebarItem icon={<History size={20} />} label="History" href="/ticket-history" isExpanded={isExpanded} />
+          <SidebarItem icon={<IconLayoutDashboard size={20} />} label="Admin Dashboard" href="/admin-dashboard" isExpanded={isExpanded} />
           <SidebarItem icon={<LogOut size={20} />} label="Log out" href="#" isExpanded={isExpanded} />
         </nav>
         <button
           onClick={toggleTheme}
-          className={`mt-auto w-full py-2 flex items-center bg-Primary text-white hover:bg-opacity-80 transition-colors duration-300 rounded ${isExpanded ? 'text-left' : 'text-center'}`}
+          className={`mt-auto w-full py-2 flex items-center text-white hover:bg-opacity-80 transition-colors duration-300 rounded ${isExpanded ? 'text-left' : 'text-center'}`}
         >
           {themeIcon}
           {isExpanded && <span className="ml-2">{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>}
@@ -97,7 +100,7 @@ export function TicketManagement() {
       </aside>
 
       {/* Main content */}
-      <main className={`flex-1 p-8 bg-neutral-100 dark:bg-slate-950 overflow-auto transition-all duration-300 ease-in-out ${isExpanded ? 'ml-[300px]' : 'ml-[72px]'}`}>
+      <main className={`flex-1 p-8 bg-neutral-100 dark:bg-Primary overflow-auto transition-all duration-300 ease-in-out ${isExpanded ? 'ml-[300px]' : 'ml-[72px]'}`}>
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-8 text-Primary dark:text-neutral-100">
             My tickets :
@@ -157,7 +160,7 @@ function SidebarItem({ icon, label, href, isExpanded }: { icon: React.ReactNode;
 
 function TicketItem({ ticket }: { ticket: any }) {
   return (
-    <div className="p-4 rounded-lg bg-Primary"> 
+    <div className="p-4 rounded-lg shadow-lg hover:shadow-xl bg-Primary"> 
       <div className="flex items-start space-x-4">
         <img src="/Sidebar-icon.jpg" alt={ticket.user} className="w-10 h-10 rounded-full" />
         <div className="flex-1">

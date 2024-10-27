@@ -66,14 +66,6 @@ export function PersonalInformation() {
                   <InputField label="Email" id="email" type="email" />
                   <InputField label="Extension No" id="extension" type="text" />
                 </div>
-                <div className="flex justify-end">
-                  <button
-                    type="submit"
-                    className="px-4 py-2 bg-Primary text-neutral-200 rounded transition-colors duration-300"
-                  >
-                    Save Changes
-                  </button>
-                </div>
               </form>
             </motion.div>
           </AnimatePresence>
