@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Moon, Sun, Home, User, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Moon, Sun, Home, User, ChevronLeft, ChevronRight, Ticket, LayoutDashboard, LogOut } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { ThemeProvider, useTheme } from 'next-themes'
@@ -35,7 +35,9 @@ export function PersonalInformation() {
         </div>
         <nav className="flex-grow">
           <SidebarItem icon={<Home size={20} />} label="Home" href="/" isExpanded={isExpanded} />
-          <SidebarItem icon={<User size={20} />} label="Profile" href="#" isExpanded={isExpanded} />
+          <SidebarItem icon={<Ticket size={20} />} label="My Tickets" href="/user-main/ticket" isExpanded={isExpanded} />
+          <SidebarItem icon={<LayoutDashboard size={20} />} label="Admin Dashboard" href="/admin-dashboard" isExpanded={isExpanded} />
+          <SidebarItem icon={<LogOut size={20} />} label="Log out" href="/" isExpanded={isExpanded} />
         </nav>
         <button
           onClick={toggleTheme}

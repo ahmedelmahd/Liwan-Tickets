@@ -96,7 +96,7 @@ export function AdminDashboard() {
 
       {/* Main content */}
       <main className={`flex-1 p-4 transition-all duration-300 dark:bg-Primary dark:text-neutral-200 bg-neutral-200 text-Primary h-fit ${isExpanded ? 'ml-[300px]' : 'ml-[72px]'}`}>
-        <h1 className="text-2xl md:text-3xl font-bold mb-4 px-8">Dashboard</h1>
+        <h1 className="text-2xl md:text-3xl font-bold mb-4 px-8 py-4">Dashboard</h1>
         
         {/* Managers Section */}
         <h2 className='text-xl font-semibold mb-4 px-8'>Add Managers:</h2>
@@ -167,19 +167,19 @@ export function AdminDashboard() {
           <form className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-semibold text-Primary dark:text-neutral-200">Name</label>
-              <input type="text" id="name" name="name" className="mt-1 dark:bg-neutral-200 bg-neutral-700 text-neutral-200 dark:text-Primary block w-full rounded-md border-gray-300 shadow-sm p-1 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+              <input type="text" id="name" name="name" className="mt-1 dark:bg-neutral-200 bg-neutral-400 text-black dark:text-Primary block w-full rounded-md border-gray-300 shadow-sm p-1 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-semibold text-Primary dark:text-neutral-200">Email</label>
-              <input type="email" id="email" name="email" className="mt-1 dark:bg-neutral-200 bg-neutral-700 text-neutral-200 dark:text-Primary p-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+              <input type="email" id="email" name="email" className="mt-1 dark:bg-neutral-200 bg-neutral-400 text-black dark:text-Primary p-1 block w-full rounded-md shadow-sm" />
             </div>
             <div>
               <label htmlFor="phone" className="block text-sm font-semibold text-Primary dark:text-neutral-200">Phone Number</label>
-              <input type="tel" id="phone" name="phone" className="mt-1 dark:bg-neutral-200 bg-neutral-700 text-neutral-200 dark:text-Primary block w-full rounded-md border-gray-300 shadow-sm p-1 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+              <input type="tel" id="phone" name="phone" className="mt-1 dark:bg-neutral-200 bg-neutral-400 text-black dark:text-Primary block w-full rounded-md border-gray-300 shadow-sm p-1 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
             </div>
             <div>
               <label htmlFor="ext" className="block text-sm font-semibold text-Primary dark:text-neutral-200">Ext Number</label>
-              <input type="text" id="ext" name="ext" className="mt-1 dark:bg-neutral-200 bg-neutral-700 text-neutral-200 dark:text-Primary block w-full rounded-md border-gray-300 shadow-sm p-1 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+              <input type="text" id="ext" name="ext" className="mt-1 dark:bg-neutral-200 bg-neutral-400 text-black dark:text-Primary block w-full rounded-md border-gray-300 shadow-sm p-1 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
             </div>
             <div className="flex justify-end">
               <button type="submit" className="px-4 py-2 bg-Primary text-white dark:bg-neutral-200 dark:text-Primary hover:dark:bg-neutral-300 hover:bg-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">

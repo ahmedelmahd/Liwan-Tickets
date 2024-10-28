@@ -9,24 +9,27 @@ import { GrDashboard } from 'react-icons/gr'
 import { IconDashboard, IconLayoutDashboard } from '@tabler/icons-react'
 
 const tickets = [
-  { id: 1, user: 'Test user', title: 'Issue title', description: 'Description Description Description Description Description Description', date: '19/10/2024' },
-  { id: 2, user: 'Test user', title: 'Issue title', description: 'Description Description Description Description Description Description', date: '19/10/2024' },
-  { id: 3, user: 'Test user', title: 'Issue title', description: 'Description Description Description Description Description Description', date: '19/10/2024' },
-  { id: 4, user: 'Test user', title: 'Issue title', description: 'Description Description Description Description Description Description', date: '19/10/2024' },
+  { id: 1, user: 'Test user', title: 'Issue title', description: 'Description Description Description Description Description Description', date: '19/10/2024', status: 'pending' },
+  { id: 2, user: 'Test user', title: 'Issue title', description: 'Description Description Description Description Description Description', date: '19/10/2024', status: 'completed' },
+  { id: 3, user: 'Test user', title: 'Issue title', description: 'Description Description Description Description Description Description', date: '19/10/2024', status: 'pending' },
+  { id: 4, user: 'Test user', title: 'Issue title', description: 'Description Description Description Description Description Description', date: '19/10/2024', status: 'completed' },
+  { id: 5, user: 'Test user', title: 'Issue title', description: 'Description Description Description Description Description Description', date: '19/10/2024', status: 'pending' },
 ]
 
 export function TicketManagement() {
   const [isExpanded, setIsExpanded] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
+  const [showPending, setShowPending] = useState(true)
   const ticketsPerPage = 4
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [selectedTicket, setSelectedTicket] = useState(null)
   const [isPopupOpen, setIsPopupOpen] = useState(false)
 
+  const filteredTickets = tickets.filter(ticket => showPending ? ticket.status === 'pending' : ticket.status === 'completed')
   const indexOfLastTicket = currentPage * ticketsPerPage
   const indexOfFirstTicket = indexOfLastTicket - ticketsPerPage
-  const currentTickets = tickets.slice(indexOfFirstTicket, indexOfLastTicket)
+  const currentTickets = filteredTickets.slice(indexOfFirstTicket, indexOfLastTicket)
 
   useEffect(() => {
     setMounted(true)
@@ -40,35 +43,9 @@ export function TicketManagement() {
 
   const themeIcon = mounted ? (
     theme === "dark" ? (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-6 h-6 transition duration-300 ease-in-out transform hover:rotate-180"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 3v1.5M12 19.5V21M4.219 4.219l1.061 1.061M17.719 17.719l1.061 1.061M3 12h1.5M19.5 12H21M4.219 19.781l1.061-1.061M17.719 6.281l1.061-1.061M12 9a3 3 0 100 6 3 3 0 000-6z"
-        />
-      </svg>
+      <Sun className="w-6 h-6 transition duration-300 ease-in-out transform hover:rotate-180" />
     ) : (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-6 h-6 transition duration-300 ease-in-out transform hover:rotate-180"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M21.752 15.002A9.718 9.718 0 0112.003 21c-5.385 0-9.75-4.365-9.75-9.75 0-4.207 2.663-7.793 6.423-9.126.45-.164.938.086 1.06.55a.749.749 0 01-.347.826 8.251 8.251 0 1010.965 10.965.75.75 0 01.826-.347c.464.122.714.61.55 1.06z"
-        />
-      </svg>
+      <Moon className="w-6 h-6 transition duration-300 ease-in-out transform hover:rotate-180" />
     )
   ) : null
 
@@ -92,34 +69,43 @@ export function TicketManagement() {
       >
         <div className="flex items-center mb-8">
           <Link href={"/Profile"} className='flex items-center'>
-          <img src="/Sidebar-icon.jpg" alt="Admin" className="w-10 h-10 rounded-full mr-3" />
-          {isExpanded && <span className="text-xl font-semibold">Admin</span>}
+            <img src="/Sidebar-icon.jpg" alt="Admin" className="w-10 h-10 rounded-full mr-3" />
+            {isExpanded && <span className="text-xl font-semibold">Admin</span>}
           </Link>
         </div>
         <nav className="flex-grow">
           <SidebarItem icon={<Home size={20} />} label="Home" href="/user-main" isExpanded={isExpanded} />
           <SidebarItem icon={<History size={20} />} label="History" href="/ticket-history" isExpanded={isExpanded} />
           <SidebarItem icon={<IconLayoutDashboard size={20} />} label="Admin Dashboard" href="/admin-dashboard" isExpanded={isExpanded} />
-          <SidebarItem icon={<LogOut size={20} />} label="Log out" href="#" isExpanded={isExpanded} />
+          <SidebarItem icon={<LogOut size={20} />} label="Log out" href="/" isExpanded={isExpanded} />
         </nav>
-        <button
-          onClick={toggleTheme}
-          className={`mt-auto w-full py-2 flex items-center text-white hover:bg-opacity-80 transition-colors duration-300 rounded ${isExpanded ? 'text-left' : 'text-center'}`}
-        >
-          {themeIcon}
-          {isExpanded && <span className="ml-2">{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>}
-        </button>
+        <div className="mt-auto">
+          <SidebarItem
+            icon={themeIcon}
+            label={theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            onClick={toggleTheme}
+            isExpanded={isExpanded}
+          />
+        </div>
       </aside>
 
       {/* Main content */}
       <main className={`flex-1 p-8 bg-neutral-100 dark:bg-Primary overflow-auto transition-all duration-300 ease-in-out ${isExpanded ? 'ml-[300px]' : 'ml-[72px]'}`}>
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold mb-8 text-Primary dark:text-neutral-100">
-            My tickets :
-          </h1>
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-3xl font-bold text-Primary dark:text-neutral-100">
+              My Tickets
+            </h1>
+            <button
+              onClick={() => setShowPending(!showPending)}
+              className="px-4 py-2 bg-Primary text-neutral-200 rounded hover:bg-opacity-80 transition-colors duration-300"
+            >
+              {showPending ? 'Show Completed' : 'Show Pending'}
+            </button>
+          </div>
           <AnimatePresence mode="wait">
             <motion.div
-              key={currentPage}
+              key={currentPage + (showPending ? 'pending' : 'completed')}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
@@ -151,8 +137,8 @@ export function TicketManagement() {
         </button>
         <button 
           className="p-2 rounded-full bg-Primary text-neutral-200"
-          onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(tickets.length / ticketsPerPage)))}
-          disabled={currentPage === Math.ceil(tickets.length / ticketsPerPage)}
+          onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredTickets.length / ticketsPerPage)))}
+          disabled={currentPage === Math.ceil(filteredTickets.length / ticketsPerPage)}
         >
           <ChevronDown size={24} />
         </button>
@@ -168,18 +154,24 @@ export function TicketManagement() {
   )
 }
 
-function SidebarItem({ icon, label, href, isExpanded }: { icon: React.ReactNode; label: string; href: string; isExpanded: boolean }) {
-  return (
-    <a href={href} className="flex items-center mb-4 dark:text-neutral-200  hover:text-white cursor-pointer transition-colors duration-300">
+function SidebarItem({ icon, label, href, isExpanded, onClick }: { icon: React.ReactNode; label: string; href?: string; isExpanded: boolean; onClick?: () => void }) {
+  const content = (
+    <div className="flex items-center mb-4 dark:text-neutral-200 hover:text-white cursor-pointer transition-colors duration-300">
       <div className="w-8">{icon}</div>
       <span className={`ml-2 ${isExpanded ? 'opacity-100' : 'opacity-0 w-0'} transition-all duration-300`}>{label}</span>
-    </a>
+    </div>
   )
+
+  if (href) {
+    return <Link href={href}>{content}</Link>
+  }
+
+  return <div onClick={onClick}>{content}</div>
 }
 
 function TicketItem({ ticket, onView }: { ticket: any; onView: (ticket: any) => void }) {
   return (
-    <div className="p-4 rounded-lg shadow-lg hover:shadow-xl bg-Primary"> 
+    <div className="p-4 rounded-lg shadow-lg hover:shadow-2xl shadow-black/50 hover:shadow-black duration-300 bg-Primary space-y-8 space-x-8"> 
       <div className="flex items-start space-x-4">
         <img src="/Sidebar-icon.jpg" alt={ticket.user} className="w-10 h-10 rounded-full" />
         <div className="flex-1">
@@ -193,7 +185,12 @@ function TicketItem({ ticket, onView }: { ticket: any; onView: (ticket: any) => 
           <p className="mt-2 text-sm text-neutral-200 opacity-90 dark:text-neutral-200 dark:opacity-90">{ticket.description}</p>
         </div>
       </div>
-      <div className='flex justify-end'>
+      <div className='flex justify-between items-center'>
+        <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+          ticket.status === 'pending' ? 'bg-yellow-200 text-yellow-800' : 'bg-green-200 text-green-800'
+        }`}>
+          {ticket.status}
+        </span>
         <button 
           className="mt-4 px-3 py-1 dark:bg-Primary dark:text-neutral-200 text-Primary bg-neutral-100 hover:dark:bg-neutral-200 hover:dark:text-neutral-950 font-semibold rounded text-sm hover:bg-opacity-80 transition-colors duration-300"
           onClick={() => onView(ticket)}
@@ -242,14 +239,15 @@ function TicketDetailsPopup({ ticket, onClose }: { ticket: any; onClose: () => v
         <div className="mb-4">
           <p className="text-sm text-neutral-600 dark:text-neutral-400">{ticket.user} - {ticket.date}</p>
           <p className="mt-2 text-neutral-800 dark:text-neutral-200">{ticket.description}</p>
+          <p className="mt-2 text-sm font-semibold">Status: <span className={ticket.status === 'pending' ? 'text-yellow-500' : 'text-green-500'}>{ticket.status}</span></p>
         </div>
         <div className="flex justify-end space-x-4">
-          <button
-            onClick={handleRespond}
-            className="px-4 py-2 bg-Primary text-white rounded hover:bg-blue-800 transition-colors duration-300"
+          <Link
+            href="/admin-respond"
+            className="px-4 py-2 bg-Primary text-white rounded hover:bg-blue-800 transition-colors duration-300 inline-block"
           >
             Respond
-          </button>
+          </Link>
           <button
             onClick={handleDelete}
             className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors duration-300"
