@@ -81,7 +81,7 @@ export function AdminDashboard() {
           </Link>
         </div>
         <nav className="flex-grow">
-          <SidebarItem icon={<Home size={20} />} label="Home" href="/" isExpanded={isExpanded} />
+          <SidebarItem icon={<Home size={20} />} label="Home" href="/user-main" isExpanded={isExpanded} />
           <SidebarItem icon={<History size={20} />} label="History" href="/ticket-history" isExpanded={isExpanded} />
           <SidebarItem icon={<LogOut size={20} />} label="Log out" href="#" isExpanded={isExpanded} />
         </nav>
@@ -102,7 +102,7 @@ export function AdminDashboard() {
         <h2 className='text-xl font-semibold mb-4 px-8'>Add Managers:</h2>
         <div className='grid md:grid-cols-3 grid-cols-1 gap-4 px-8 pt-4'>
           {[1, 2, 3].map((manager, index) => (
-            <div key={index} className='border-2 dark:border-Primary border-neutral-200 shadow-lg rounded-lg hover:shadow-xl p-4'>
+            <div key={index} className='border-2 dark:border-Primary border-neutral-200 shadow-lg rounded-lg duration-300 hover:shadow-xl p-4'>
               <div className='md:max-w-none max-w-full'>
                 <h3 className='font-semibold text-xl truncate'>Manager {manager}</h3>
                 <p className='text-sm break-words'>Email: ahmedsamir.0120495@gmail.com</p>
@@ -116,7 +116,7 @@ export function AdminDashboard() {
           ))}
 
           {/* Add Manager Card */}
-          <div className='border-2 dark:border-Primary border-neutral-200 shadow-lg rounded-lg hover:shadow-xl p-4'>
+          <div className='border-2 dark:border-Primary border-neutral-200 shadow-lg rounded-lg hover:shadow-xl duration-300 p-4'>
             <div className='flex justify-center items-center p-14'>
               <button className='flex justify-center items-center' onClick={() => openModal('manager')}>
                 <IconPlus width={40} height={40} />
@@ -130,7 +130,7 @@ export function AdminDashboard() {
         <h2 className='text-xl font-semibold px-8 py-8'>Add Departments:</h2>
         <div className='grid md:grid-cols-3 grid-cols-1 gap-4 px-8 pt-4'>
           {["Human Resources", "Finance", "IT"].map((department, index) => (
-            <div key={index} className='border-2 dark:border-Primary border-neutral-200 shadow-lg rounded-lg hover:shadow-xl p-4'>
+            <div key={index} className='border-2 dark:border-Primary border-neutral-200 shadow-lg rounded-lg hover:shadow-xl duration-300 p-4'>
               <div className='md:max-w-none max-w-full'>
                 <h3 className='font-semibold text-xl truncate'>{department}</h3>
                 <div className='flex justify-center items-center p-4'>
@@ -139,14 +139,14 @@ export function AdminDashboard() {
                   </button>
                 </div>
                 <div className='flex justify-end'>
-                  <button className='bg-red-700 p-2 rounded-lg text-white font-semibold'>Delete</button>
+                  <button className='bg-red-700 p-2 rounded-lg text-white font-semibold duration-300'>Delete</button>
                 </div>
               </div>
             </div>
           ))}
 
           {/* Add Department Card */}
-          <div className='border-2 dark:border-Primary border-neutral-200 shadow-lg rounded-lg hover:shadow-xl p-4'>
+          <div className='border-2 dark:border-Primary border-neutral-200 shadow-lg rounded-lg hover:shadow-xl duration-300 p-4'>
             <div className='flex justify-center items-center p-14'>
               <button className='flex justify-center items-center' onClick={() => openModal('department')}>
                 <IconPlus width={40} height={40} />
